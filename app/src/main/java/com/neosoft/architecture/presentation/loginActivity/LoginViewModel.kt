@@ -3,6 +3,7 @@ package com.neosoft.architecture.presentation.loginActivity
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import com.neosoft.architecture.data.netCall.RestApi
 import com.neosoft.architecture.domain.usecases.LoginUC
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -20,8 +21,10 @@ class LoginViewModel : ViewModel {
 
     var mLoginUC: LoginUC? = null
 
-    constructor() {
-        mLoginUC = LoginUC()
+    var restApi: RestApi? = null
+
+    constructor(mLoginUC: LoginUC?) {
+        this.mLoginUC = mLoginUC
     }
 
     fun loginResponse(): LiveData<LoginModel> {
@@ -33,12 +36,14 @@ class LoginViewModel : ViewModel {
         mDisposables.add(mLoginUC!!.doLoginUC(username, password)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe({ mMutableLiveData.value = LoginModel.loading() })
+            .doOnSubscribe({ d -> mMutableLiveData.setValue(LoginModel.loading()) })
             .subscribe(
-                { result -> mMutableLiveData.value = LoginModel.success(result) },
-                { throwable -> mMutableLiveData.value = LoginModel.error(throwable) }
+                { result -> mMutableLiveData.setValue(LoginModel.success(result)) },
+                { throwable -> mMutableLiveData.setValue(LoginModel.error(throwable)) }
             ))
     }
+
+
 
 
 }

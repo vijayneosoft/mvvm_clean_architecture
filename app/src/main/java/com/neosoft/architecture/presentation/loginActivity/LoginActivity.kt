@@ -10,28 +10,39 @@ import android.widget.Toast
 import com.neosoft.architecture.R
 import com.neosoft.architecture.data.enums.Status
 import com.neosoft.architecture.presentation.UserApplication
+import com.neosoft.architecture.presentation.loginActivity.factory.ViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
-    lateinit var mLoginViewModel: LoginViewModel
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+
+    var mLoginViewModel: LoginViewModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        mLoginViewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
+
+        (application as UserApplication).getComponent()!!.inject(this)
+
+        mLoginViewModel = ViewModelProviders.of(this, viewModelFactory).get(LoginViewModel::class.java)
+
+
         showResponseData()
         btn_login.setOnClickListener(this)
 
     }
 
+
     private fun loadData() {
-        mLoginViewModel.doLoginVM(edt_email.text.toString(), edt_password.text.toString())
+        mLoginViewModel!!.doLoginVM(edt_email.text.toString(), edt_password.text.toString())
     }
 
     private fun showResponseData() {
-        mLoginViewModel.loginResponse().observe(this, Observer { loginModel ->
+        mLoginViewModel!!.loginResponse().observe(this, Observer { loginModel ->
             when (loginModel!!.status) {
                 Status.LOADING -> {
                     Log.d("TAG", "LOADING")

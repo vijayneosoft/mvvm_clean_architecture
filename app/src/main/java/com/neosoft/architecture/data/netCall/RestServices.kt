@@ -1,5 +1,6 @@
 package com.neosoft.architecture.data.netCall
 
+import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -20,7 +21,10 @@ class RestServices {
         fun getClient(): Retrofit {
             val interceptor = HttpLoggingInterceptor()
             interceptor.level = HttpLoggingInterceptor.Level.BODY
-            val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
+            val client = OkHttpClient.Builder()
+                .addInterceptor(interceptor)
+                .addNetworkInterceptor(StethoInterceptor())
+                .build()
 
             retrofit = Retrofit.Builder()
                 .baseUrl(BASE_URL)
