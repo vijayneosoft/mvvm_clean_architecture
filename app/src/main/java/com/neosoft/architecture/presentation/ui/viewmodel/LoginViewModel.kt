@@ -1,10 +1,10 @@
-package com.neosoft.architecture.presentation.loginActivity
+package com.neosoft.architecture.presentation.ui.viewmodel
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import com.neosoft.architecture.data.netCall.RestApi
 import com.neosoft.architecture.domain.usecases.LoginUC
+import com.neosoft.architecture.presentation.ui.model.LoginModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -20,8 +20,6 @@ class LoginViewModel : ViewModel {
     var mMutableLiveData = MutableLiveData<LoginModel>()
 
     var mLoginUC: LoginUC? = null
-
-    var restApi: RestApi? = null
 
     constructor(mLoginUC: LoginUC?) {
         this.mLoginUC = mLoginUC

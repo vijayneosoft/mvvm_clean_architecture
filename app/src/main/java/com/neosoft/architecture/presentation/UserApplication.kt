@@ -26,7 +26,7 @@ class UserApplication : Application() {
 
     }
 
-    fun getComponent() : AppComponent? {
+    fun getComponent(): AppComponent? {
         return appComponent
     }
 

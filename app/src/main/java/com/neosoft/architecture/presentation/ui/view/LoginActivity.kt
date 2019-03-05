@@ -1,4 +1,4 @@
-package com.neosoft.architecture.presentation.loginActivity
+package com.neosoft.architecture.presentation.ui.view
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
@@ -10,7 +10,8 @@ import android.widget.Toast
 import com.neosoft.architecture.R
 import com.neosoft.architecture.data.enums.Status
 import com.neosoft.architecture.presentation.UserApplication
-import com.neosoft.architecture.presentation.loginActivity.factory.ViewModelFactory
+import com.neosoft.architecture.presentation.ui.viewModelFactory.ViewModelFactory
+import com.neosoft.architecture.presentation.ui.viewmodel.LoginViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
@@ -29,13 +30,10 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         (application as UserApplication).getComponent()!!.inject(this)
 
         mLoginViewModel = ViewModelProviders.of(this, viewModelFactory).get(LoginViewModel::class.java)
-
-
         showResponseData()
         btn_login.setOnClickListener(this)
 
     }
-
 
     private fun loadData() {
         mLoginViewModel!!.doLoginVM(edt_email.text.toString(), edt_password.text.toString())

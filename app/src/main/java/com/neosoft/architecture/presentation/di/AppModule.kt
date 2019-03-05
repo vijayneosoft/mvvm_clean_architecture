@@ -9,7 +9,8 @@ import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import com.neosoft.architecture.data.netCall.RestApi
 import com.neosoft.architecture.domain.usecases.LoginUC
-import com.neosoft.architecture.presentation.loginActivity.factory.ViewModelFactory
+import com.neosoft.architecture.presentation.ui.viewModelFactory.ViewModelFactory
+import com.neosoft.architecture.presentation.utils.Constants
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -25,8 +26,6 @@ import javax.inject.Singleton
 
 @Module
 class AppModule {
-
-    var BASE_URL = "http://staging.php-dev.in:8844/trainingapp/api/"//put your base url here
 
     var context: Context? = null
 
@@ -52,18 +51,13 @@ class AppModule {
     fun provideRetrofit(gson: Gson, okHttpClient: OkHttpClient): Retrofit {
 
         return Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(Constants.BASE_URL)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
     }
 
-    @Provides
-    @Singleton
-    fun getApiCallInterface(retrofit: Retrofit): RestApi {
-        return retrofit.create<RestApi>(RestApi::class.java!!)
-    }
 
     @Provides
     @Singleton
@@ -86,8 +80,15 @@ class AppModule {
     }
 
     @Provides
-    fun getLoginUC(): LoginUC {
-        return LoginUC()
+    @Singleton
+    fun getApiCallInterface(retrofit: Retrofit): RestApi {
+        return retrofit.create(RestApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun getLoginUC(restApi: RestApi): LoginUC {
+        return LoginUC(restApi)
     }
 
     @Provides

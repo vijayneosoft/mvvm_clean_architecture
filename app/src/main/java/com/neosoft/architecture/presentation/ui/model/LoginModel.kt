@@ -1,4 +1,4 @@
-package com.neosoft.architecture.presentation.loginActivity
+package com.neosoft.architecture.presentation.ui.model
 
 import com.google.gson.annotations.SerializedName
 import com.neosoft.architecture.data.enums.Status

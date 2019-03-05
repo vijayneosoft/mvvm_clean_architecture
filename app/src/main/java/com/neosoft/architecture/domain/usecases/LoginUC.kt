@@ -1,21 +1,23 @@
 package com.neosoft.architecture.domain.usecases
 
 import com.neosoft.architecture.data.netCall.RestApi
-import com.neosoft.architecture.data.netCall.RestServices
-import com.neosoft.architecture.presentation.loginActivity.LoginModel
+import com.neosoft.architecture.presentation.ui.model.LoginModel
 import io.reactivex.Observable
-import javax.inject.Inject
 
 /**
  * Created by Vijay on 26/2/19.
  */
 
-class LoginUC @Inject constructor(){
+class LoginUC {
 
-    val restApi = RestServices.getClient().create(RestApi::class.java)
+    var mRestApi: RestApi? = null
+
+    constructor(mRestApi: RestApi?) {
+        this.mRestApi = mRestApi
+    }
 
     fun doLoginUC(username: String, password: String): Observable<LoginModel> {
-        return restApi.doLoginApi(username, password)
+        return mRestApi!!.doLoginApi(username, password)
     }
 
 }

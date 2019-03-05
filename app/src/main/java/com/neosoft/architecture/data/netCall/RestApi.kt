@@ -1,6 +1,6 @@
 package com.neosoft.architecture.data.netCall
 
-import com.neosoft.architecture.presentation.loginActivity.LoginModel
+import com.neosoft.architecture.presentation.ui.model.LoginModel
 import io.reactivex.Observable
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
