@@ -44,7 +44,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
 
-   /* RxJava lib*/
+    /* RxJava lib*/
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
     implementation "io.reactivex.rxjava2:rxjava:2.1.8"
     implementation 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
@@ -62,30 +62,6 @@ dependencies {
     implementation 'com.google.dagger:dagger-android:2.15'
     kapt 'com.google.dagger:dagger-android-processor:2.15'
     implementation 'com.google.dagger:dagger-android-support:2.15'
-
-   /* *//* dagger dependency for DI*//*
-    implementation "com.google.dagger:dagger:2.13"
-    annotationProcessor "com.google.dagger:dagger-compiler:2.13"
-    compileOnly 'javax.annotation:jsr250-api:1.0'
-    implementation 'javax.inject:javax.inject:1'
-
-    *//*Retrofit lib*//*
-    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
-
-    *//*RxJava lib*//*
-    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    implementation "io.reactivex.rxjava2:rxjava:2.1.8"
-    implementation 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
-
-    *//* LiveData lib*//*
-    implementation "android.arch.lifecycle:extensions:1.1.1"
-    implementation "android.arch.lifecycle:runtime:1.1.1"
-    kapt "android.arch.lifecycle:compiler:1.1.1"
-
-    // Developer tools
-    implementation 'com.facebook.stetho:stetho:1.5.0'
-    implementation 'com.facebook.stetho:stetho-okhttp3:1.5.0'*/
 
 
 }

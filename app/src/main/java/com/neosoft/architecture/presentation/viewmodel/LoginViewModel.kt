@@ -14,16 +14,10 @@ import io.reactivex.schedulers.Schedulers
  * Created by Vijay on 26/2/19.
  */
 
-class LoginViewModel : ViewModel {
+class LoginViewModel(var mLoginUC: LoginUC?) : ViewModel() {
 
     var mDisposables = CompositeDisposable()
     var mMutableLiveData = MutableLiveData<LoginModel>()
-
-    var mLoginUC: LoginUC? = null
-
-    constructor(mLoginUC: LoginUC?) {
-        this.mLoginUC = mLoginUC
-    }
 
     fun loginResponse(): LiveData<LoginModel> {
         return mMutableLiveData
@@ -38,10 +32,9 @@ class LoginViewModel : ViewModel {
             .subscribe(
                 { result -> mMutableLiveData.setValue(LoginModel.success(result)) },
                 { throwable -> mMutableLiveData.setValue(LoginModel.error(throwable)) }
-            ))
+            )
+        )
     }
-
-
 
 
 }
