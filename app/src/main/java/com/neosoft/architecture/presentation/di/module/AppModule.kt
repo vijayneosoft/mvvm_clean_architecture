@@ -8,7 +8,10 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import com.neosoft.architecture.data.netCall.RestApi
+import com.neosoft.architecture.domain.ctx.emailAuth.EmailAuthProvider
+import com.neosoft.architecture.domain.ctx.emailAuth.EmailAuthProviderImpl
 import com.neosoft.architecture.domain.usecases.LoginUC
+import com.neosoft.architecture.domain.usecases.NetworkingUC
 import com.neosoft.architecture.presentation.ui.viewModelFactory.ViewModelFactory
 import com.neosoft.architecture.presentation.utils.Constants
 import dagger.Module
@@ -87,14 +90,27 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun getLoginUC(restApi: RestApi): LoginUC {
-        return LoginUC(restApi)
+    fun getNetworkingUC(restApi: RestApi): NetworkingUC {
+        return NetworkingUC(restApi)
     }
 
     @Provides
     @Singleton
-    fun getViewModelFactory(loginUC: LoginUC): ViewModelProvider.Factory {
-        return ViewModelFactory(loginUC)
+    fun getEmailAuthProvider(): EmailAuthProvider {
+        return EmailAuthProviderImpl()
+    }
+
+    @Provides
+    @Singleton
+    fun getLoginUC(emailAuthProvider: EmailAuthProvider): LoginUC {
+        return LoginUC(emailAuthProvider)
+    }
+
+
+    @Provides
+    @Singleton
+    fun getViewModelFactory(networkingUC: NetworkingUC, mLoginUC: LoginUC): ViewModelProvider.Factory {
+        return ViewModelFactory(networkingUC, mLoginUC)
     }
 
 }

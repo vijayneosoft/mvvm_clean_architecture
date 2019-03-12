@@ -11,7 +11,7 @@ import com.neosoft.architecture.R
 import com.neosoft.architecture.data.enums.Status
 import com.neosoft.architecture.presentation.UserApplication
 import com.neosoft.architecture.presentation.ui.viewModelFactory.ViewModelFactory
-import com.neosoft.architecture.presentation.ui.viewmodel.LoginViewModel
+import com.neosoft.architecture.presentation.ui.viewmodel.SignInViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
@@ -21,7 +21,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
-    var mLoginViewModel: LoginViewModel? = null
+    var mSignInViewModel: SignInViewModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,19 +29,19 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
         (application as UserApplication).getComponent()!!.inject(this)
 
-        mLoginViewModel = ViewModelProviders.of(this, viewModelFactory).get(LoginViewModel::class.java)
+        mSignInViewModel = ViewModelProviders.of(this, viewModelFactory).get(SignInViewModel::class.java)
         showResponseData()
         btn_login.setOnClickListener(this)
 
     }
 
     private fun loadData() {
-        mLoginViewModel!!.doLoginVM(edt_email.text.toString(), edt_password.text.toString())
+        mSignInViewModel!!.doLoginVM(edt_email.text.toString(), edt_password.text.toString())
     }
 
     private fun showResponseData() {
-        mLoginViewModel!!.loginResponse().observe(this, Observer { loginModel ->
-            when (loginModel!!.status) {
+        mSignInViewModel!!.loginResponse().observe(this, Observer { signInModel ->
+            when (signInModel!!.status) {
                 Status.LOADING -> {
                     Log.d("TAG", "LOADING")
                 }
@@ -50,7 +50,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                     Toast.makeText(this, "SUCCESS", Toast.LENGTH_LONG).show()
                 }
                 Status.ERROR -> {
-                    Log.d("TAG", "ERROR" + loginModel.error!!.message)
+                    Log.d("TAG", "ERROR" + signInModel.error!!.message)
                 }
             }
         })
