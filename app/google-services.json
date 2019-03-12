@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "237208553058",
+    "firebase_url": "https://matrimony-39a99.firebaseio.com",
+    "project_id": "matrimony-39a99",
+    "storage_bucket": "matrimony-39a99.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:237208553058:android:775def0c4c654665",
+        "android_client_info": {
+          "package_name": "com.neosoft.architecture"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "237208553058-lcvec4re8mk1ie2af9d1gcc3dilhn2uh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.neosoft.architecture",
+            "certificate_hash": "72d5a9ca201f9d4ee3964b81b37de3057a53f965"
+          }
+        },
+        {
+          "client_id": "237208553058-iju32cg2na5i8flifgndjhanc7e6gtrh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJ2-pTjs0Bjl5Kvs2y9rYfuxaergXezBc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "237208553058-iju32cg2na5i8flifgndjhanc7e6gtrh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,6 +1,6 @@
 package com.neosoft.architecture.data.netCall
 
-import com.neosoft.architecture.presentation.ui.model.LoginModel
+import com.neosoft.architecture.presentation.ui.model.SignInModel
 import io.reactivex.Observable
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -14,9 +14,9 @@ interface RestApi {
 
     @FormUrlEncoded
     @POST("users/login")
-    fun doLoginApi(
+    fun doSignInApi(
         @Field("email") email: String,
         @Field("password") password: String
-    ): Observable<LoginModel>
+    ): Observable<SignInModel>
 
 }

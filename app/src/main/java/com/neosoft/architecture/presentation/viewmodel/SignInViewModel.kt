@@ -1,10 +1,10 @@
-package com.neosoft.architecture.presentation.ui.viewmodel
+package com.neosoft.architecture.presentation.viewmodel
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import com.neosoft.architecture.domain.usecases.LoginUC
-import com.neosoft.architecture.presentation.ui.model.LoginModel
+import com.neosoft.architecture.domain.usecases.NetworkingUC
+import com.neosoft.architecture.presentation.ui.model.SignInModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -14,24 +14,23 @@ import io.reactivex.schedulers.Schedulers
  * Created by Vijay on 26/2/19.
  */
 
-class LoginViewModel(var mLoginUC: LoginUC?) : ViewModel() {
+class SignInViewModel(var mNetworkingUC: NetworkingUC?) : ViewModel() {
 
     var mDisposables = CompositeDisposable()
-    var mMutableLiveData = MutableLiveData<LoginModel>()
+    var mMutableLiveData = MutableLiveData<SignInModel>()
 
-    fun loginResponse(): LiveData<LoginModel> {
+    fun loginResponse(): LiveData<SignInModel> {
         return mMutableLiveData
     }
 
     fun doLoginVM(username: String, password: String) {
-
-        mDisposables.add(mLoginUC!!.doLoginUC(username, password)
+        mDisposables.add(mNetworkingUC!!.doSignInUC(username, password)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe({ d -> mMutableLiveData.setValue(LoginModel.loading()) })
+            .doOnSubscribe({ d -> mMutableLiveData.setValue(SignInModel.loading()) })
             .subscribe(
-                { result -> mMutableLiveData.setValue(LoginModel.success(result)) },
-                { throwable -> mMutableLiveData.setValue(LoginModel.error(throwable)) }
+                { result -> mMutableLiveData.setValue(SignInModel.success(result)) },
+                { throwable -> mMutableLiveData.setValue(SignInModel.error(throwable)) }
             )
         )
     }

@@ -1,7 +1,24 @@
 package com.neosoft.architecture.domain.usecases
 
+import com.neosoft.architecture.domain.ctx.emailAuth.EmailAuthListener
+import com.neosoft.architecture.domain.ctx.emailAuth.EmailAuthProvider
+
 /**
  * Created by Vijay on 8/3/19.
  */
+
 class LoginUC {
+
+    var mEmailAuthProvider: EmailAuthProvider? = null
+
+    constructor(emailAuthProvider: EmailAuthProvider) {
+        this.mEmailAuthProvider = emailAuthProvider
+    }
+
+    fun emailVerification(email: String, password: String, emailAuthListener: EmailAuthListener) {
+        mEmailAuthProvider!!.createUserWithEmailAndPassword(email, password, emailAuthListener)
+
+    }
+
+
 }

@@ -1,13 +1,13 @@
 package com.neosoft.architecture.domain.usecases
 
 import com.neosoft.architecture.data.netCall.RestApi
-import com.neosoft.architecture.presentation.ui.model.LoginModel
+import com.neosoft.architecture.presentation.ui.model.SignInModel
 import io.reactivex.Observable
 
 /**
  * Created by Vijay on 7/3/19.
  */
-class NetworkUC {
+class NetworkingUC {
 
     var mRestApi: RestApi? = null
 
@@ -15,8 +15,11 @@ class NetworkUC {
         this.mRestApi = mRestApi
     }
 
-    fun doLoginUC(username: String, password: String): Observable<LoginModel> {
-        return mRestApi!!.doLoginApi(username, password)
+    fun doSignInUC(username: String, password: String): Observable<SignInModel> {
+        return mRestApi!!.doSignInApi(username, password)
     }
+
+
+
 
 }

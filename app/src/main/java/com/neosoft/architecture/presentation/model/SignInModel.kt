@@ -8,7 +8,7 @@ import com.neosoft.architecture.data.enums.Status
  * Created by Vijay on 26/2/19.
  */
 
-class LoginModel {
+class SignInModel {
 
     @SerializedName("user_msg")
     var user_msg: String? = null
@@ -20,25 +20,25 @@ class LoginModel {
 
     var status: Status? = null
 
-    var loginModel: LoginModel? = null
+    var loginModel: SignInModel? = null
 
-    constructor(status: Status, loginModel: LoginModel?, error: Throwable?) {
+    constructor(status: Status, signInModel: SignInModel?, error: Throwable?) {
         this.status = status
-        this.loginModel = loginModel
+        this.loginModel = signInModel
         this.error = error
     }
 
     companion object {
-        fun loading(): LoginModel {
-            return LoginModel(Status.LOADING, null, null)
+        fun loading(): SignInModel {
+            return SignInModel(Status.LOADING, null, null)
         }
 
-        fun success(response: LoginModel): LoginModel {
-            return LoginModel(Status.SUCCESS, response, null)
+        fun success(response: SignInModel): SignInModel {
+            return SignInModel(Status.SUCCESS, response, null)
         }
 
-        fun error(error: Throwable): LoginModel {
-            return LoginModel(Status.ERROR, null, error)
+        fun error(error: Throwable): SignInModel {
+            return SignInModel(Status.ERROR, null, error)
         }
     }
 

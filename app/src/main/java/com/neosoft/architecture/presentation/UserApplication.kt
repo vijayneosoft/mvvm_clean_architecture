@@ -3,9 +3,10 @@ package com.neosoft.architecture.presentation
 import android.app.Application
 import android.content.Context
 import com.facebook.stetho.Stetho
-import com.neosoft.architecture.presentation.di.AppComponent
-import com.neosoft.architecture.presentation.di.AppModule
-import com.neosoft.architecture.presentation.di.DaggerAppComponent
+import com.google.firebase.FirebaseApp
+import com.neosoft.architecture.presentation.di.component.AppComponent
+import com.neosoft.architecture.presentation.di.module.AppModule
+import com.neosoft.architecture.presentation.di.component.DaggerAppComponent
 
 
 /**
@@ -22,7 +23,11 @@ class UserApplication : Application() {
         context = this
         Stetho.initializeWithDefaults(this);
 
-        appComponent = DaggerAppComponent.builder().appModule(AppModule(this)).build()
+        FirebaseApp.initializeApp(this)
+
+        appComponent = DaggerAppComponent.builder()
+            .appModule(AppModule(this))
+            .build()
 
     }
 
