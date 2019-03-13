@@ -22,7 +22,6 @@ class NetworkingModule {
         return NetworkingUC(restApi)
     }
 
-
     @Provides
     @Singleton
     fun getViewModelFactory(networkingUC: NetworkingUC, mLoginUC: LoginUC): ViewModelProvider.Factory {

@@ -10,5 +10,8 @@
     <!--information text-->
     <string name="information_register">Register</string>
 
+    <!--error-->
+    <string name="error_empty_field">Field cannot be empty</string>
+
 
 </resources>

@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -57,9 +58,16 @@ class RegistrationActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(view: View?) {
         when (view!!.id) {
             R.id.reg_btn_register -> {
-                mRegistrationViewModel!!.registerUser(reg_edt_email.text.toString(), reg_edt_password.text.toString())
+                if (!TextUtils.isEmpty(reg_edt_email.text.toString()) && !TextUtils.isEmpty(reg_edt_password.text.toString())) {
+                    mRegistrationViewModel!!.registerUser(
+                        reg_edt_email.text.toString(),
+                        reg_edt_password.text.toString()
+                    )
+                } else {
+                    Toast.makeText(this, getString(R.string.error_empty_field), Toast.LENGTH_LONG).show()
+                }
             }
         }
     }
-
 }
+

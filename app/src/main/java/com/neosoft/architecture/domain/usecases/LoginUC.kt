@@ -16,7 +16,7 @@ class LoginUC {
     }
 
     fun emailVerification(email: String, password: String, emailAuthListener: EmailAuthListener) {
-        mEmailAuthProvider!!.createUserWithEmailAndPassword(email, password, emailAuthListener)
+        mEmailAuthProvider!!.createUser(email, password, emailAuthListener)
 
     }
 

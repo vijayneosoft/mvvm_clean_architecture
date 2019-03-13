@@ -6,6 +6,6 @@ package com.neosoft.architecture.domain.ctx.emailAuth
 
 interface EmailAuthProvider {
 
-    fun createUserWithEmailAndPassword(email: String, password: String, emailAuthListener: EmailAuthListener)
+    fun createUser(email: String, password: String, emailAuthListener: EmailAuthListener)
 
 }
