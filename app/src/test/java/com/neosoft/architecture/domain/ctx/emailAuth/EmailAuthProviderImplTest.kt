@@ -51,7 +51,7 @@ class EmailAuthProviderImplTest {
     }
 
     @Test
-    fun onCompleteTest() {
+    fun onCompleteSuccessTest() {
         var email = "test@gmail.com"
         var password = "test@123"
 
@@ -71,8 +71,10 @@ class EmailAuthProviderImplTest {
 
         verifyNoMoreInteractions(mEmailAuthListener)
         verifyNoMoreInteractions(mFirebaseAuth)
+        verifyNoMoreInteractions(mUser)
 
     }
+
 
 
 }
