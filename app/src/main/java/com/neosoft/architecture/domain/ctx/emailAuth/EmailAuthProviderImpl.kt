@@ -27,11 +27,12 @@ class EmailAuthProviderImpl : EmailAuthProvider, OnCompleteListener<AuthResult> 
 
     override fun onComplete(auth: Task<AuthResult>) {
         if (auth.isSuccessful) {
-            Log.d("FIREBASE_TAG", "" + auth.result!!.user)
+//            Log.d("FIREBASE_TAG", "" + auth.result!!.user)
+
             mEmailAuthListener!!.onSuccess(auth.result!!.user)
 
         } else {
-            Log.d("FIREBASE_TAG", "" + auth.exception)
+//            Log.d("FIREBASE_TAG", "" + auth.exception)
             mEmailAuthListener!!.onFailure(auth.exception)
 
         }

@@ -6,9 +6,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import org.junit.Before
 import org.junit.Test
+import org.mockito.ArgumentMatchers
 import org.mockito.Mock
-import org.mockito.Mockito.`when`
-import org.mockito.Mockito.verifyNoMoreInteractions
+import org.mockito.Mockito.*
 import org.mockito.MockitoAnnotations
 
 
@@ -25,6 +25,10 @@ class EmailAuthProviderImplTest {
     lateinit var mEmailAuthListener: EmailAuthListener
     @Mock
     lateinit var mAuthTask: Task<AuthResult>
+
+    @Mock
+    lateinit var mAuthResult: AuthResult
+
     @Mock
     lateinit var mUser: FirebaseUser
 
@@ -48,11 +52,25 @@ class EmailAuthProviderImplTest {
 
     @Test
     fun onCompleteTest() {
+        var email = "test@gmail.com"
+        var password = "test@123"
+
+        `when`(mFirebaseAuth.createUserWithEmailAndPassword(email, password)).thenReturn(mAuthTask)
         `when`(mAuthTask.isSuccessful).thenReturn(true)
+        `when`(mAuthTask.getResult()).thenReturn(mAuthResult)
+        `when`(mAuthResult.user).thenReturn(mUser)
+
+        mEmailAuthProviderImpl.createUser(email, password, mEmailAuthListener)
 
         mEmailAuthProviderImpl.onComplete(mAuthTask)
 
+        verify(mAuthTask).addOnCompleteListener(ArgumentMatchers.any(EmailAuthProviderImpl::class.java))
+        verify(mAuthTask).getResult()
+        verify(mEmailAuthListener).onSuccess(mUser)
+        verify(mFirebaseAuth).createUserWithEmailAndPassword(email, password)
+
         verifyNoMoreInteractions(mEmailAuthListener)
+        verifyNoMoreInteractions(mFirebaseAuth)
 
     }
 
