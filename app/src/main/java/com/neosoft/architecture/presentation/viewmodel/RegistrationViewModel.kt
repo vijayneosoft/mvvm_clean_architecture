@@ -6,6 +6,9 @@ import com.google.firebase.auth.FirebaseUser
 import com.neosoft.architecture.domain.ctx.emailAuth.EmailAuthListener
 import com.neosoft.architecture.domain.usecases.LoginUC
 import com.neosoft.architecture.presentation.model.RegistrationModel
+import com.neosoft.architecture.presentation.ui.model.SignInModel
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 /**
  * Created by Vijay on 7/3/19.
@@ -26,7 +29,7 @@ class RegistrationViewModel : ViewModel, EmailAuthListener {
 
     fun registerUser(email: String, password: String) {
         mMutableLiveData.setValue(RegistrationModel.loading())
-        mLoginUC!!.emailVerification(email, password, this)
+        mLoginUC?.emailVerification(email, password, this)
     }
 
     override fun onSuccess(user: FirebaseUser) {
@@ -36,5 +39,6 @@ class RegistrationViewModel : ViewModel, EmailAuthListener {
     override fun onFailure(exception: Exception?) {
         mMutableLiveData.setValue(RegistrationModel.error(exception))
     }
+
 
 }

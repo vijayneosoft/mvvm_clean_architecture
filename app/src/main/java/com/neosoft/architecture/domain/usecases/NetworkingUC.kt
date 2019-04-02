@@ -15,11 +15,9 @@ class NetworkingUC {
         this.mRestApi = mRestApi
     }
 
-    fun doSignInUC(username: String, password: String): Observable<SignInModel> {
-        return mRestApi!!.doSignInApi(username, password)
+    fun doSignInUC(username: String, password: String): Observable<SignInModel>? {
+        return mRestApi?.doSignInApi(username, password)
     }
-
-
 
 
 }

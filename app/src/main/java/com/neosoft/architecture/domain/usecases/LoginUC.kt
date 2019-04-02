@@ -15,8 +15,16 @@ class LoginUC {
         this.mEmailAuthProvider = emailAuthProvider
     }
 
+    /**
+     * TODO
+     *
+     * @param email
+     * @param password
+     * @param emailAuthListener
+     */
+
     fun emailVerification(email: String, password: String, emailAuthListener: EmailAuthListener) {
-        mEmailAuthProvider!!.createUser(email, password, emailAuthListener)
+        mEmailAuthProvider?.createUser(email, password, emailAuthListener)
 
     }
 

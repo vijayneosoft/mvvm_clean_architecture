@@ -12,7 +12,9 @@ import io.reactivex.schedulers.Schedulers
 
 /**
  * Created by Vijay on 26/2/19.
+ *
  */
+
 
 class SignInViewModel(var mNetworkingUC: NetworkingUC?) : ViewModel() {
 
@@ -23,16 +25,21 @@ class SignInViewModel(var mNetworkingUC: NetworkingUC?) : ViewModel() {
         return mMutableLiveData
     }
 
+    /**
+     * TODO
+     *
+     * @param username
+     * @param password
+     */
     fun doLoginVM(username: String, password: String) {
-        mDisposables.add(mNetworkingUC!!.doSignInUC(username, password)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe({ d -> mMutableLiveData.setValue(SignInModel.loading()) })
-            .subscribe(
+        mNetworkingUC?.doSignInUC(username, password)
+            ?.subscribeOn(Schedulers.io())?.observeOn(AndroidSchedulers.mainThread())
+            ?.subscribe(
                 { result -> mMutableLiveData.setValue(SignInModel.success(result)) },
                 { throwable -> mMutableLiveData.setValue(SignInModel.error(throwable)) }
-            )
-        )
+            )?.let {
+                mDisposables.add(it)
+            }
     }
 
 
