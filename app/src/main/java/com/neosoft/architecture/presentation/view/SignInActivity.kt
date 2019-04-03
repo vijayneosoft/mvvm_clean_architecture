@@ -3,8 +3,7 @@ package com.neosoft.architecture.presentation.ui.view
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.view.View
-import android.widget.Toast
+import butterknife.OnClick
 import com.neosoft.architecture.R
 import com.neosoft.architecture.data.enums.Status
 import com.neosoft.architecture.presentation.BaseActivity
@@ -15,8 +14,7 @@ import kotlinx.android.synthetic.main.activity_sign_in.*
 import javax.inject.Inject
 
 
-class SignInActivity : BaseActivity(), View.OnClickListener {
-
+class SignInActivity : BaseActivity() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
@@ -26,12 +24,11 @@ class SignInActivity : BaseActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
-
         observeResponse()
 
     }
 
-    override fun injectViewModel() {
+    override fun initViewmodel() {
         mSignInViewModel = ViewModelProviders.of(this, viewModelFactory).get(SignInViewModel::class.java)
     }
 
@@ -39,11 +36,7 @@ class SignInActivity : BaseActivity(), View.OnClickListener {
         (application as UserApplication).getComponent()!!.inject(this)
     }
 
-    override fun setListeners() {
-        signIn_btn_login.setOnClickListener(this)
-    }
-
-    override fun loadData() {
+    fun loadData() {
         showLoading()
         mSignInViewModel?.doLoginVM(edt_email.text.toString(), edt_password.text.toString())
     }
@@ -58,22 +51,22 @@ class SignInActivity : BaseActivity(), View.OnClickListener {
                 Status.SUCCESS -> {
                     //success
                     hideLoading()
-                    Toast.makeText(this, "SUCCESS", Toast.LENGTH_LONG).show()
+                    showToastMessage(getString(R.string.information_success))
                 }
                 Status.ERROR -> {
                     //error
                     hideLoading()
-                    Toast.makeText(this, "ERROR" + signInModel.error!!.message, Toast.LENGTH_LONG).show()
+                    showToastMessage(getString(R.string.information_error) + signInModel.error!!.message)
+
                 }
             }
         })
     }
 
-    override fun onClick(view: View?) {
-        when (view?.id) {
-            R.id.signIn_btn_login ->
-                loadData()
-        }
+    @OnClick(R.id.signIn_btn_login)
+    fun onSignInClick() {
+        loadData()
     }
+
 
 }

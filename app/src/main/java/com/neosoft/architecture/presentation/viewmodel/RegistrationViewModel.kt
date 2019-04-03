@@ -6,9 +6,6 @@ import com.google.firebase.auth.FirebaseUser
 import com.neosoft.architecture.domain.ctx.emailAuth.EmailAuthListener
 import com.neosoft.architecture.domain.usecases.LoginUC
 import com.neosoft.architecture.presentation.model.RegistrationModel
-import com.neosoft.architecture.presentation.ui.model.SignInModel
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 
 /**
  * Created by Vijay on 7/3/19.

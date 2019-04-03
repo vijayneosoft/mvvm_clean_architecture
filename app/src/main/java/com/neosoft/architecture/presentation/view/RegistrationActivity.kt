@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
+import butterknife.OnClick
 import com.google.firebase.FirebaseApp
 import com.neosoft.architecture.R
 import com.neosoft.architecture.data.enums.Status
@@ -18,7 +19,7 @@ import com.neosoft.architecture.presentation.viewmodel.RegistrationViewModel
 import kotlinx.android.synthetic.main.activity_registration.*
 import javax.inject.Inject
 
-class RegistrationActivity : BaseActivity(), View.OnClickListener {
+class RegistrationActivity : BaseActivity() {
 
 
     @Inject
@@ -29,14 +30,12 @@ class RegistrationActivity : BaseActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
-
         FirebaseApp.initializeApp(this)
-
         observeResponse()
 
     }
 
-    override fun injectViewModel() {
+    override fun initViewmodel() {
         mRegistrationViewModel = ViewModelProviders.of(this, viewModelFactory).get(RegistrationViewModel::class.java)
     }
 
@@ -44,11 +43,7 @@ class RegistrationActivity : BaseActivity(), View.OnClickListener {
         (application as UserApplication).getComponent()?.inject(this)
     }
 
-    override fun setListeners() {
-        reg_btn_register.setOnClickListener(this)
-    }
-
-    override fun loadData() {
+    fun loadData() {
         showLoading()
         mRegistrationViewModel?.registerUser(
             reg_edt_email.text.toString(),
@@ -79,16 +74,14 @@ class RegistrationActivity : BaseActivity(), View.OnClickListener {
 
     }
 
-    override fun onClick(view: View?) {
-        when (view?.id) {
-            R.id.reg_btn_register -> {
-                if (!TextUtils.isEmpty(reg_edt_email.text.toString()) && !TextUtils.isEmpty(reg_edt_password.text.toString())) {
-                    loadData()
-                } else {
-                    Toast.makeText(this, getString(R.string.error_empty_field), Toast.LENGTH_LONG).show()
-                }
-            }
+    @OnClick(R.id.reg_btn_register)
+    fun onRegisterButtonClick() {
+        if (!TextUtils.isEmpty(reg_edt_email.text.toString()) && !TextUtils.isEmpty(reg_edt_password.text.toString())) {
+            loadData()
+        } else {
+            Toast.makeText(this, getString(R.string.error_empty_field), Toast.LENGTH_LONG).show()
         }
     }
+
 }
 

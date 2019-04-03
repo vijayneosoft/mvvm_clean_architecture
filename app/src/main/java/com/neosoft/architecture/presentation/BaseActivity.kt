@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
+import android.widget.Toast
 import com.neosoft.architecture.R
 import kotlinx.android.synthetic.main.activity_base.*
 
@@ -20,15 +21,20 @@ open abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setListeners()
         injectComponent()
-        injectViewModel()
+        initViewmodel()
     }
 
-    abstract fun injectViewModel()
+    abstract fun initViewmodel()
     abstract fun injectComponent()
-    abstract fun setListeners()
-    abstract fun loadData()
+
+    /**
+     * TODO
+     * child should override for retry on API failure
+     */
+    fun retry() {
+
+    }
 
 
     override fun setContentView(layoutResID: Int) {
@@ -48,6 +54,10 @@ open abstract class BaseActivity : AppCompatActivity() {
 
     fun hideLoading() {
         progressBar.visibility = View.GONE
+    }
+
+    fun showToastMessage(message : String){
+        Toast.makeText(this,message,Toast.LENGTH_SHORT).show()
     }
 
 

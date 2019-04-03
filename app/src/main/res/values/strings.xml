@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">architecture</string>
-    <string name="enter_email">Enter email</string>
 
     <!--hint text-->
     <string name="hint_email">Enter email</string>
@@ -9,6 +8,10 @@
 
     <!--information text-->
     <string name="information_register">Register</string>
+    <string name="information_success">Success</string>
+    <string name="information_error">Error</string>
+    <string name="information_enter_email">Enter email</string>
+
 
     <!--error-->
     <string name="error_empty_field">Field cannot be empty</string>
