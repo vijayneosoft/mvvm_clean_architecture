@@ -3,12 +3,11 @@ package com.neosoft.architecture.presentation.view
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import androidx.appcompat.app.AppCompatActivity
 import com.neosoft.architecture.R
-import com.neosoft.architecture.presentation.ui.view.SignInActivity
+import com.neosoft.architecture.presentation.BaseActivity
 
 
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : BaseActivity() {
 
     val SPLASH_DISPLAY_LENGTH: Long = 2000
 
@@ -23,6 +22,13 @@ class SplashActivity : AppCompatActivity() {
             finish()
 
         }, SPLASH_DISPLAY_LENGTH)
+    }
+
+    override fun initViewmodel() {
+
+    }
+
+    override fun injectComponent() {
 
     }
 

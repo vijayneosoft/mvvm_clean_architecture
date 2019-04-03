@@ -1,12 +1,12 @@
 package com.neosoft.architecture.presentation.view
 
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
-import android.view.View
 import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import butterknife.ButterKnife
 import butterknife.OnClick
 import com.google.firebase.FirebaseApp
 import com.neosoft.architecture.R
@@ -32,6 +32,7 @@ class RegistrationActivity : BaseActivity() {
         setContentView(R.layout.activity_registration)
         FirebaseApp.initializeApp(this)
         observeResponse()
+        ButterKnife.bind(this)
 
     }
 
@@ -71,6 +72,7 @@ class RegistrationActivity : BaseActivity() {
                 }
             }
         })
+
 
     }
 
