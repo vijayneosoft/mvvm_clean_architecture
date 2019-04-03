@@ -1,7 +1,7 @@
 package com.neosoft.architecture.presentation.ui.viewModelFactory
 
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.neosoft.architecture.domain.usecases.LoginUC
 import com.neosoft.architecture.domain.usecases.NetworkingUC
 import com.neosoft.architecture.presentation.viewmodel.SignInViewModel

@@ -20,9 +20,6 @@ class RegistrationModel {
     }
 
     companion object {
-        fun loading(): RegistrationModel {
-            return RegistrationModel(Status.LOADING, null, null)
-        }
 
         fun success(user: FirebaseUser): RegistrationModel {
             return RegistrationModel(Status.SUCCESS, user, null)

@@ -29,9 +29,6 @@ class SignInModel {
     }
 
     companion object {
-        fun loading(): SignInModel {
-            return SignInModel(Status.LOADING, null, null)
-        }
 
         fun success(response: SignInModel): SignInModel {
             return SignInModel(Status.SUCCESS, response, null)

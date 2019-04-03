@@ -1,8 +1,8 @@
 package com.neosoft.architecture.presentation.viewmodel
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.neosoft.architecture.domain.usecases.NetworkingUC
 import com.neosoft.architecture.presentation.ui.model.SignInModel
 import io.reactivex.android.schedulers.AndroidSchedulers

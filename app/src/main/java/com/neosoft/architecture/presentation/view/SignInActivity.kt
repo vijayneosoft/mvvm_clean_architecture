@@ -1,7 +1,7 @@
 package com.neosoft.architecture.presentation.ui.view
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import butterknife.OnClick
 import com.neosoft.architecture.R

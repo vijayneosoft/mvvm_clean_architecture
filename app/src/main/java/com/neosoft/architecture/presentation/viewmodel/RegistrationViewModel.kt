@@ -1,7 +1,7 @@
 package com.neosoft.architecture.presentation.viewmodel
 
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseUser
 import com.neosoft.architecture.domain.ctx.emailAuth.EmailAuthListener
 import com.neosoft.architecture.domain.usecases.LoginUC
@@ -25,7 +25,6 @@ class RegistrationViewModel : ViewModel, EmailAuthListener {
     }
 
     fun registerUser(email: String, password: String) {
-        mMutableLiveData.setValue(RegistrationModel.loading())
         mLoginUC?.emailVerification(email, password, this)
     }
 
