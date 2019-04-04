@@ -4,12 +4,13 @@ import android.app.ProgressDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.FrameLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import butterknife.ButterKnife
 import com.neosoft.architecture.R
 import kotlinx.android.synthetic.main.activity_base.*
+import kotlinx.android.synthetic.main.toolbar_with_back_arrow.*
 
 /**
  * Created by Vijay on 2/4/19.
@@ -18,6 +19,7 @@ import kotlinx.android.synthetic.main.activity_base.*
 open abstract class BaseActivity : AppCompatActivity() {
 
     var mProgressDialog: ProgressDialog? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +35,17 @@ open abstract class BaseActivity : AppCompatActivity() {
      * child should override for retry on API failure
      */
     fun retry() {
+
+    }
+
+    fun setToolbar(title: String) {
+
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+
+        val mToolBarTitle = toolbar.findViewById<TextView>(R.id.txt_title)
+        mToolBarTitle.setText(title)
 
     }
 

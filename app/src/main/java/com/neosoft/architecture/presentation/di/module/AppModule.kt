@@ -6,7 +6,7 @@ import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import com.neosoft.architecture.data.netCall.RestApi
+import com.neosoft.architecture.data.net.RestApi
 import com.neosoft.architecture.presentation.utils.Constants
 import dagger.Module
 import dagger.Provides

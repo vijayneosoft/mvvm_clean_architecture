@@ -12,6 +12,8 @@
     <string name="information_success">Success</string>
     <string name="information_error">Error</string>
     <string name="information_enter_email">Enter email</string>
+    <string name="information_title">title</string>
+
 
 
     <!--error-->

@@ -6,7 +6,6 @@ import android.text.TextUtils
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import butterknife.ButterKnife
 import butterknife.OnClick
 import com.google.firebase.FirebaseApp
 import com.neosoft.architecture.R
@@ -21,7 +20,6 @@ import javax.inject.Inject
 
 class RegistrationActivity : BaseActivity() {
 
-
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
@@ -32,7 +30,8 @@ class RegistrationActivity : BaseActivity() {
         setContentView(R.layout.activity_registration)
         FirebaseApp.initializeApp(this)
         observeResponse()
-        ButterKnife.bind(this)
+
+        setToolbar(getString(R.string.information_register))
 
     }
 
@@ -51,6 +50,7 @@ class RegistrationActivity : BaseActivity() {
             reg_edt_password.text.toString()
         )
     }
+
 
     /**
      * TODO
@@ -84,6 +84,7 @@ class RegistrationActivity : BaseActivity() {
             Toast.makeText(this, getString(R.string.error_empty_field), Toast.LENGTH_LONG).show()
         }
     }
+
 
 }
 

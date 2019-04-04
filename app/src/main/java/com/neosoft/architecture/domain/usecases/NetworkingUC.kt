@@ -1,6 +1,6 @@
 package com.neosoft.architecture.domain.usecases
 
-import com.neosoft.architecture.data.netCall.RestApi
+import com.neosoft.architecture.data.net.RestApi
 import com.neosoft.architecture.presentation.ui.model.SignInModel
 import io.reactivex.Observable
 

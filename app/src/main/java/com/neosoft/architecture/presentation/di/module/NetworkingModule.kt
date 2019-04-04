@@ -1,7 +1,7 @@
 package com.neosoft.architecture.presentation.di.module
 
 import androidx.lifecycle.ViewModelProvider
-import com.neosoft.architecture.data.netCall.RestApi
+import com.neosoft.architecture.data.net.RestApi
 import com.neosoft.architecture.domain.usecases.LoginUC
 import com.neosoft.architecture.domain.usecases.NetworkingUC
 import com.neosoft.architecture.presentation.ui.viewModelFactory.ViewModelFactory

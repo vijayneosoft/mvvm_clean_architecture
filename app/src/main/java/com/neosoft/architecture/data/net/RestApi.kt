@@ -1,4 +1,4 @@
-package com.neosoft.architecture.data.netCall
+package com.neosoft.architecture.data.net
 
 import com.neosoft.architecture.presentation.ui.model.SignInModel
 import io.reactivex.Observable
