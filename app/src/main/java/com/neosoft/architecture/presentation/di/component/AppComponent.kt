@@ -3,8 +3,8 @@ package com.neosoft.architecture.presentation.di.component
 import com.neosoft.architecture.presentation.di.module.AppModule
 import com.neosoft.architecture.presentation.di.module.LoginModule
 import com.neosoft.architecture.presentation.di.module.NetworkingModule
-import com.neosoft.architecture.presentation.ui.view.SignInActivity
 import com.neosoft.architecture.presentation.view.RegistrationActivity
+import com.neosoft.architecture.presentation.view.SignInActivity
 import dagger.Component
 import javax.inject.Singleton
 

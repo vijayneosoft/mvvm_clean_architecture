@@ -38,8 +38,12 @@ open abstract class BaseActivity : AppCompatActivity() {
 
     }
 
+    /**
+     * TODO
+     * set toolbar with back arrow
+     * @param title
+     */
     fun setToolbar(title: String) {
-
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowTitleEnabled(false)

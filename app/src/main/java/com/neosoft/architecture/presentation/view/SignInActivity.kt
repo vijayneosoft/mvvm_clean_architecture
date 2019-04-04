@@ -1,8 +1,9 @@
-package com.neosoft.architecture.presentation.ui.view
+package com.neosoft.architecture.presentation.view
 
+import android.annotation.SuppressLint
+import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import android.os.Bundle
 import butterknife.OnClick
 import com.neosoft.architecture.R
 import com.neosoft.architecture.data.enums.Status
@@ -14,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_sign_in.*
 import javax.inject.Inject
 
 
+@SuppressLint("Registered")
 class SignInActivity : BaseActivity() {
 
     @Inject
@@ -33,10 +35,10 @@ class SignInActivity : BaseActivity() {
     }
 
     override fun injectComponent() {
-        (application as UserApplication).getComponent()!!.inject(this)
+        (application as UserApplication).getComponent()?.inject(this)
     }
 
-    fun loadData() {
+    fun doLogin() {
         showLoading()
         mSignInViewModel?.doLoginVM(edt_email.text.toString(), edt_password.text.toString())
     }
@@ -65,7 +67,7 @@ class SignInActivity : BaseActivity() {
 
     @OnClick(R.id.signIn_btn_login)
     fun onSignInClick() {
-        loadData()
+        doLogin()
     }
 
 
