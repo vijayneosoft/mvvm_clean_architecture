@@ -1,6 +1,8 @@
 package com.neosoft.architecture.presentation.view
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -22,6 +24,13 @@ class SignInActivity : BaseActivity() {
     lateinit var viewModelFactory: ViewModelFactory
 
     var mSignInViewModel: SignInViewModel? = null
+
+    companion object {
+        fun getCallingIntent(context: Context): Intent {
+            val intent = Intent(context, SignInActivity::class.java)
+            return intent
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

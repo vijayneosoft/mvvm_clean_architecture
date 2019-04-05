@@ -15,9 +15,9 @@
     <string name="information_title">title</string>
 
 
-
     <!--error-->
     <string name="error_empty_field">Field cannot be empty</string>
+    <string name="title_activity_maps">Map</string>
 
 
 </resources>

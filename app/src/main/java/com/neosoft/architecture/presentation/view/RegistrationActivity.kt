@@ -1,5 +1,6 @@
 package com.neosoft.architecture.presentation.view
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
@@ -11,6 +12,7 @@ import com.neosoft.architecture.R
 import com.neosoft.architecture.data.enums.Status
 import com.neosoft.architecture.presentation.BaseActivity
 import com.neosoft.architecture.presentation.UserApplication
+import com.neosoft.architecture.presentation.navigation.Navigator
 import com.neosoft.architecture.presentation.ui.viewModelFactory.ViewModelFactory
 import com.neosoft.architecture.presentation.viewmodel.RegistrationViewModel
 import kotlinx.android.synthetic.main.activity_registration.*
@@ -22,6 +24,14 @@ class RegistrationActivity : BaseActivity() {
     lateinit var viewModelFactory: ViewModelFactory
 
     var mRegistrationViewModel: RegistrationViewModel? = null
+
+    companion object {
+        fun getCallingIntent(context: Context): Intent {
+            val intent = Intent(context, RegistrationActivity::class.java)
+            return intent
+        }
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,8 +69,9 @@ class RegistrationActivity : BaseActivity() {
                 Status.SUCCESS -> {
                     //success
                     hideLoading()
-                    val intent = Intent(this, SignInActivity::class.java)
-                    startActivity(intent)
+                    var navigator = Navigator()
+                    navigator.navigateToSignInActivity(this)
+
                 }
                 Status.ERROR -> {
                     //error
