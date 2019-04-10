@@ -1,7 +1,6 @@
 package com.neosoft.architecture.presentation.navigation
 
 import android.content.Context
-import com.neosoft.architecture.presentation.view.RegistrationActivity
 import com.neosoft.architecture.presentation.view.SignInActivity
 
 /**
@@ -20,7 +19,7 @@ class Navigator {
     }
 
     fun navigateToMapsActivity(context: Context) {
-        context.startActivity(RegistrationActivity.getCallingIntent(context))
+        context.startActivity(MapsActivity.getCallingIntent(context))
     }
 
 

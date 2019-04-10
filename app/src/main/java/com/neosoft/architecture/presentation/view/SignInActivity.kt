@@ -63,6 +63,8 @@ class SignInActivity : BaseActivity() {
                     //success
                     hideLoading()
                     showToastMessage(getString(R.string.information_success))
+                    mNavigator?.navigateToMapsActivity(this)
+
                 }
                 Status.ERROR -> {
                     //error

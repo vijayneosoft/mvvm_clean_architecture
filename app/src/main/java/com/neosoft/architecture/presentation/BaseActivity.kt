@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import butterknife.ButterKnife
 import com.neosoft.architecture.R
+import com.neosoft.architecture.presentation.navigation.Navigator
 import kotlinx.android.synthetic.main.activity_base.*
 import kotlinx.android.synthetic.main.toolbar_with_back_arrow.*
 
@@ -19,16 +20,27 @@ import kotlinx.android.synthetic.main.toolbar_with_back_arrow.*
 open abstract class BaseActivity : AppCompatActivity() {
 
     var mProgressDialog: ProgressDialog? = null
-
+    var mNavigator: Navigator? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         injectComponent()
         initViewmodel()
+        injectNavigator()
+
     }
 
     abstract fun initViewmodel()
     abstract fun injectComponent()
+
+    /**
+     * TODO
+     *  intialize mNavigator
+     */
+    private fun injectNavigator() {
+        mNavigator = ((application as UserApplication).getComponent()?.navigator())
+
+    }
 
     /**
      * TODO

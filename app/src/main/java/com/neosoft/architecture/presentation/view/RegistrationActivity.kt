@@ -12,7 +12,6 @@ import com.neosoft.architecture.R
 import com.neosoft.architecture.data.enums.Status
 import com.neosoft.architecture.presentation.BaseActivity
 import com.neosoft.architecture.presentation.UserApplication
-import com.neosoft.architecture.presentation.navigation.Navigator
 import com.neosoft.architecture.presentation.ui.viewModelFactory.ViewModelFactory
 import com.neosoft.architecture.presentation.viewmodel.RegistrationViewModel
 import kotlinx.android.synthetic.main.activity_registration.*
@@ -31,7 +30,6 @@ class RegistrationActivity : BaseActivity() {
             return intent
         }
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,8 +67,7 @@ class RegistrationActivity : BaseActivity() {
                 Status.SUCCESS -> {
                     //success
                     hideLoading()
-                    var navigator = Navigator()
-                    navigator.navigateToSignInActivity(this)
+                    mNavigator?.navigateToSignInActivity(this)
 
                 }
                 Status.ERROR -> {

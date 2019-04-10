@@ -18,6 +18,8 @@
     <!--error-->
     <string name="error_empty_field">Field cannot be empty</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_signIn">Sign In</string>
+
 
 
 </resources>
