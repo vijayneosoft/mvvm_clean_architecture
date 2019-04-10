@@ -18,9 +18,9 @@ class Navigator {
         context.startActivity(SignInActivity.getCallingIntent(context))
     }
 
-    fun navigateToMapsActivity(context: Context) {
+   /* fun navigateToMapsActivity(context: Context) {
         context.startActivity(MapsActivity.getCallingIntent(context))
-    }
+    }*/
 
 
 }
