@@ -12,15 +12,20 @@ import com.neosoft.architecture.R
 import com.neosoft.architecture.data.enums.Status
 import com.neosoft.architecture.presentation.BaseActivity
 import com.neosoft.architecture.presentation.UserApplication
+import com.neosoft.architecture.presentation.di.component.ActivityComponent
+import com.neosoft.architecture.presentation.di.component.DaggerActivityComponent
+import com.neosoft.architecture.presentation.di.module.ActivityModule
 import com.neosoft.architecture.presentation.ui.viewModelFactory.ViewModelFactory
 import com.neosoft.architecture.presentation.viewmodel.RegistrationViewModel
 import kotlinx.android.synthetic.main.activity_registration.*
 import javax.inject.Inject
 
+
 class RegistrationActivity : BaseActivity() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
+    var component: ActivityComponent? = null
 
     var mRegistrationViewModel: RegistrationViewModel? = null
 
@@ -45,8 +50,16 @@ class RegistrationActivity : BaseActivity() {
     }
 
     override fun injectComponent() {
-        (application as UserApplication).getComponent()?.inject(this)
+
+        component = DaggerActivityComponent.builder()
+            .applicationComponent((application as UserApplication).getComponent())
+            .activityModule(ActivityModule(this))
+            .build()
+
+        component?.inject(this)
+
     }
+
 
     fun doRegister() {
         showLoading()

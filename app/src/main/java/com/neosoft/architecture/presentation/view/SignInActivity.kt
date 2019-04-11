@@ -10,7 +10,7 @@ import butterknife.OnClick
 import com.neosoft.architecture.R
 import com.neosoft.architecture.data.enums.Status
 import com.neosoft.architecture.presentation.BaseActivity
-import com.neosoft.architecture.presentation.UserApplication
+import com.neosoft.architecture.presentation.di.component.ActivityComponent
 import com.neosoft.architecture.presentation.ui.viewModelFactory.ViewModelFactory
 import com.neosoft.architecture.presentation.viewmodel.SignInViewModel
 import kotlinx.android.synthetic.main.activity_sign_in.*
@@ -44,7 +44,14 @@ class SignInActivity : BaseActivity() {
     }
 
     override fun injectComponent() {
-        (application as UserApplication).getComponent()?.inject(this)
+        var activityComponent : ActivityComponent
+
+
+             /*DaggerActivityComponent.builder()
+            .applicationComponent((application as AndroidApplication).component)
+            .activityModule(ActivityModule(this))
+            .build()*/
+
     }
 
     fun doLogin() {

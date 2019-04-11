@@ -1,17 +1,21 @@
 package com.neosoft.architecture.presentation.di.component
 
+import com.neosoft.architecture.presentation.di.PerActivity
+import com.neosoft.architecture.presentation.di.module.ActivityModule
+import com.neosoft.architecture.presentation.view.RegistrationActivity
+import com.neosoft.architecture.presentation.view.SignInActivity
 import dagger.Component
-import javax.inject.Singleton
 
 /**
- * Created by Vijay on 10/4/19.
+ * Created by Vijay on 11/4/19.
  */
 
-@Component
-@Singleton
+@PerActivity
+@Component(dependencies = arrayOf(ApplicationComponent::class), modules = arrayOf(ActivityModule::class))
 interface ActivityComponent {
 
+    fun inject(registrationActivity: RegistrationActivity)
 
-
+    fun inject(signInActivity: SignInActivity)
 
 }

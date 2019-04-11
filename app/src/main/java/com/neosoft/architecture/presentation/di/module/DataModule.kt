@@ -1,11 +1,18 @@
 package com.neosoft.architecture.presentation.di.module
 
+import androidx.lifecycle.ViewModelProvider
 import com.facebook.stetho.okhttp3.StethoInterceptor
+import com.google.firebase.auth.FirebaseAuth
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import com.neosoft.architecture.data.net.RestApi
+import com.neosoft.architecture.domain.ctx.emailAuth.EmailAuthProvider
+import com.neosoft.architecture.domain.ctx.emailAuth.EmailAuthProviderImpl
+import com.neosoft.architecture.domain.usecases.LoginUC
+import com.neosoft.architecture.domain.usecases.NetworkingUC
+import com.neosoft.architecture.presentation.ui.viewModelFactory.ViewModelFactory
 import com.neosoft.architecture.presentation.utils.Constants
 import dagger.Module
 import dagger.Provides
@@ -21,6 +28,14 @@ import javax.inject.Singleton
 
 @Module
 class DataModule {
+
+
+
+    @Provides
+    @Singleton
+    fun provideViewModelFactory(networkingUC: NetworkingUC, mLoginUC: LoginUC): ViewModelProvider.Factory {
+        return ViewModelFactory(networkingUC, mLoginUC)
+    }
 
     @Provides
     @Singleton
@@ -67,5 +82,24 @@ class DataModule {
     fun getApiCallInterface(retrofit: Retrofit): RestApi {
         return retrofit.create(RestApi::class.java)
     }
+
+    /**
+     * TODO
+     *  networkingUC
+     * @param restApi
+     */
+
+    @Provides
+    @Singleton
+    internal fun provideNetworkingUC(restApi: RestApi): NetworkingUC {
+        return NetworkingUC(restApi)
+    }
+
+    @Provides
+    @Singleton
+    fun emailAuthProvider(): EmailAuthProvider{
+        return EmailAuthProviderImpl(FirebaseAuth.getInstance())
+    }
+
 
 }

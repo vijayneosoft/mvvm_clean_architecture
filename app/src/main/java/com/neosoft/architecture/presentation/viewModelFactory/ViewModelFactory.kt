@@ -4,8 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.neosoft.architecture.domain.usecases.LoginUC
 import com.neosoft.architecture.domain.usecases.NetworkingUC
-import com.neosoft.architecture.presentation.viewmodel.SignInViewModel
 import com.neosoft.architecture.presentation.viewmodel.RegistrationViewModel
+import com.neosoft.architecture.presentation.viewmodel.SignInViewModel
 import javax.inject.Inject
 
 /**
