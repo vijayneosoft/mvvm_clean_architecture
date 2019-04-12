@@ -1,4 +1,4 @@
-package com.neosoft.architecture.presentation.ui.viewModelFactory
+package com.neosoft.architecture.presentation.viewModelFactory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

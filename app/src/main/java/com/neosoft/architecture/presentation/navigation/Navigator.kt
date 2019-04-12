@@ -1,6 +1,7 @@
 package com.neosoft.architecture.presentation.navigation
 
 import android.content.Context
+import com.neosoft.architecture.presentation.view.MapsActivity
 import com.neosoft.architecture.presentation.view.SignInActivity
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -20,9 +21,9 @@ class Navigator {
         context.startActivity(SignInActivity.getCallingIntent(context))
     }
 
-   /* fun navigateToMapsActivity(application: Context) {
+    fun navigateToMapsActivity(application: Context) {
         application.startActivity(MapsActivity.getCallingIntent(application))
-    }*/
+    }
 
 
 }

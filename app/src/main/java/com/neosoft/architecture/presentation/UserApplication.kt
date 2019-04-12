@@ -7,6 +7,7 @@ import com.google.firebase.FirebaseApp
 import com.neosoft.architecture.presentation.di.component.ApplicationComponent
 import com.neosoft.architecture.presentation.di.component.DaggerApplicationComponent
 import com.neosoft.architecture.presentation.di.module.ApplicationModule
+import com.neosoft.architecture.presentation.di.module.DataModule
 
 
 /**
@@ -27,6 +28,7 @@ class UserApplication : Application() {
 
         applicationComponent = DaggerApplicationComponent.builder()
             .applicationModule(ApplicationModule(this))
+            .dataModule(DataModule())
             .build()
 
     }

@@ -12,8 +12,8 @@ import com.neosoft.architecture.domain.ctx.emailAuth.EmailAuthProvider
 import com.neosoft.architecture.domain.ctx.emailAuth.EmailAuthProviderImpl
 import com.neosoft.architecture.domain.usecases.LoginUC
 import com.neosoft.architecture.domain.usecases.NetworkingUC
-import com.neosoft.architecture.presentation.ui.viewModelFactory.ViewModelFactory
 import com.neosoft.architecture.presentation.utils.Constants
+import com.neosoft.architecture.presentation.viewModelFactory.ViewModelFactory
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient

@@ -15,7 +15,7 @@ import com.neosoft.architecture.presentation.UserApplication
 import com.neosoft.architecture.presentation.di.component.ActivityComponent
 import com.neosoft.architecture.presentation.di.component.DaggerActivityComponent
 import com.neosoft.architecture.presentation.di.module.ActivityModule
-import com.neosoft.architecture.presentation.ui.viewModelFactory.ViewModelFactory
+import com.neosoft.architecture.presentation.viewModelFactory.ViewModelFactory
 import com.neosoft.architecture.presentation.viewmodel.RegistrationViewModel
 import kotlinx.android.synthetic.main.activity_registration.*
 import javax.inject.Inject

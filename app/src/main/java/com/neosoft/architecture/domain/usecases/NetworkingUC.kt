@@ -10,17 +10,10 @@ import javax.inject.Singleton
  * Created by Vijay on 7/3/19.
  */
 
-class NetworkingUC {
-
-    var mRestApi: RestApi? = null
-
-    @Inject
-    constructor(mRestApi: RestApi?) {
-        this.mRestApi = mRestApi
-    }
+class NetworkingUC @Inject constructor(private val restApi: RestApi) {
 
     fun doSignInUC(username: String, password: String): Observable<SignInModel>? {
-        return mRestApi?.doSignInApi(username, password)
+        return restApi.doSignInApi(username, password)
     }
 
 

@@ -10,8 +10,10 @@ import butterknife.OnClick
 import com.neosoft.architecture.R
 import com.neosoft.architecture.data.enums.Status
 import com.neosoft.architecture.presentation.BaseActivity
-import com.neosoft.architecture.presentation.di.component.ActivityComponent
-import com.neosoft.architecture.presentation.ui.viewModelFactory.ViewModelFactory
+import com.neosoft.architecture.presentation.UserApplication
+import com.neosoft.architecture.presentation.di.component.DaggerActivityComponent
+import com.neosoft.architecture.presentation.di.module.ActivityModule
+import com.neosoft.architecture.presentation.viewModelFactory.ViewModelFactory
 import com.neosoft.architecture.presentation.viewmodel.SignInViewModel
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import javax.inject.Inject
@@ -44,13 +46,10 @@ class SignInActivity : BaseActivity() {
     }
 
     override fun injectComponent() {
-        var activityComponent : ActivityComponent
-
-
-             /*DaggerActivityComponent.builder()
-            .applicationComponent((application as AndroidApplication).component)
+        DaggerActivityComponent.builder()
+            .applicationComponent((application as UserApplication).getComponent())
             .activityModule(ActivityModule(this))
-            .build()*/
+            .build().inject(this)
 
     }
 
@@ -70,7 +69,7 @@ class SignInActivity : BaseActivity() {
                     //success
                     hideLoading()
                     showToastMessage(getString(R.string.information_success))
-//                    mNavigator?.navigateToMapsActivity(this)
+                    mNavigator?.navigateToMapsActivity(this)
 
                 }
                 Status.ERROR -> {
